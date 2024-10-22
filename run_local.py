@@ -17,4 +17,4 @@ client.run_local(
         "port": 5000,
         "image": "mlflow-pyfunc",
     },
-)
+) 

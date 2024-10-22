@@ -82,19 +82,20 @@ if __name__ == "__main__":
         model_name='Elastic Net'
         # model_uri = f"runs:/{run_id}/model"
         # result=mlflow.register_model(model_uri,model_name)
-        model_version=2
+        model_version=4
         model_uri=f"models:/{model_name}/{model_version}"
         # loaded_model=mlflow.sklearn.load_model(model_uri)
         # joblib.dump(loaded_model,'ElasticNet.pkl')
         # loaded_model=joblib.load('ElasticNet.pkl')
         mlflow.sklearn.log_model(
-                lr, 'Regression-Elastic-Net Model',signature=signature)
+                lr, 'Regression-Elastic-Net Model',signature=signature,)
         run_id=run.info.run_uuid
         print(f'Run ID: {run_id}')
         exp_id=run.info.experiment_id
         print(f'Experiment ID: {exp_id}')
         print(f'artifact_uri:{mlflow.get_artifact_uri()}')
         mlflow.end_run()
+        mlflow.register_model(model_uri=model_uri,name="Elastic Net")
         # y_pred=loaded_model.predict(test_x)
         
 
